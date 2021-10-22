@@ -10,6 +10,12 @@ let myLibrary = [
         author: "Tester",
         pages: 123,
         readStatus: "Not Read"
+    },
+    {
+        title: "A really long book title to test out styling",
+        author: "Tester",
+        pages: 123,
+        readStatus: "Read"
     }
 ];
 
@@ -21,6 +27,10 @@ class Book {
         this.readStatus = readStatus;
     }
 }
+
+myLibrary.forEach((book) => {
+    createBookCard(book);
+})
 
 const submitButton = document.getElementById("submit-button");
 submitButton.addEventListener("click", () => {
@@ -34,9 +44,41 @@ function addBookToLibrary() {
     const statusInput = document.getElementById("status-input");
 
     const newBook = new Book(titleInput.value,authorInput.value,pagesInput.value,statusInput.value);
+    
     myLibrary.push(newBook)
+
+    createBookCard(newBook);
 }
 
-myLibrary.forEach((book) => {
-    console.log(book.title);
-})
+function createBookCard(book) {
+    const bookGrid = document.getElementById("book-grid");
+    const bookCard = document.createElement("div");
+    const bookTitle = document.createElement("div");
+    const bookAuthor = document.createElement("div");
+    const bookPages = document.createElement("div");
+    const bookButtonArea = document.createElement("div");
+    const statusButton = document.createElement("button");
+    const deleteButton = document.createElement("button");
+
+    bookCard.classList.add("book-card");
+    bookTitle.classList.add("book-title");
+    bookAuthor.classList.add("book-author");
+    bookPages.classList.add("book-pages");
+    bookButtonArea.classList.add("book-buttons");
+    statusButton.classList.add("status-button");
+    deleteButton.classList.add("delete-button");
+
+    bookTitle.innerHTML = `"${book.title}"`;
+    bookAuthor.innerHTML = book.author;
+    bookPages.innerHTML = `${book.pages} pages`;
+    statusButton.innerHTML = book.readStatus;
+    deleteButton.innerHTML = "Delete";
+
+    bookGrid.appendChild(bookCard);
+    bookCard.appendChild(bookTitle);
+    bookCard.appendChild(bookAuthor);
+    bookCard.appendChild(bookPages);
+    bookCard.appendChild(bookButtonArea);
+    bookButtonArea.appendChild(statusButton);
+    bookButtonArea.appendChild(deleteButton);
+}
