@@ -22,17 +22,12 @@ class Book {
     }
 }
 
-function addBookToLibrary() {
-    const titleInput = document.getElementById("title-input");
-    const authorInput = document.getElementById("author-input");
-    const pagesInput = document.getElementById("pages-input");
-    const statusInput = document.getElementById("status-input");
-    
-    if (titleInput.value == "" || authorInput.value == "" || pagesInput.value == "" || statusInput.value == "") {
-        alert('Please complete the form');
-        return
-    }
+const titleInput = document.getElementById("title-input");
+const authorInput = document.getElementById("author-input");
+const pagesInput = document.getElementById("pages-input");
+const statusInput = document.getElementById("status-input");
 
+function addBookToLibrary() {
     const newBook = new Book(titleInput.value,authorInput.value,pagesInput.value,statusInput.value);
     
     myLibrary.push(newBook);
@@ -128,14 +123,6 @@ function checkLocalStorage() {
     }
 }
 
-const submitButton = document.getElementById("submit-button");
-submitButton.addEventListener("click", () => {
-    modal.style.display = "none";
-    addBookToLibrary();
-    updateBooksGrid();
-    clearForm();
-})
-
 function clearForm() {
     document.getElementById("title-input").value = "";
     document.getElementById("author-input").value = "";
@@ -143,12 +130,12 @@ function clearForm() {
     document.getElementById("status-input").value = "";
 }
 
-const modal = document.getElementById("modal");
-
 const addBookButton = document.getElementById("add-book-button");
 addBookButton.addEventListener("click", () => {
     modal.style.display = "block";
 })
+
+const modal = document.getElementById("modal");
 
 const closeModalButton = document.getElementById("close-modal-button")
 closeModalButton.addEventListener("click", () => {
@@ -159,6 +146,18 @@ window.addEventListener("click", (event) => {
     if (event.target == modal) {
         modal.style.display = "none";
     }
+})
+
+const submitButton = document.getElementById("submit-button");
+submitButton.addEventListener("click", () => {
+    if (titleInput.value == "" || authorInput.value == "" || pagesInput.value == "" || statusInput.value == "") {
+        return
+    }
+
+    addBookToLibrary();
+    updateBooksGrid();
+    clearForm();
+    modal.style.display = "none";
 })
 
 updateBooksGrid();
