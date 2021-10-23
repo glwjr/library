@@ -88,7 +88,8 @@ function changeReadStatus(book) {
     else {
         book.readStatus = "Read"
     }
-
+    
+    updateLocalStorage();
     updateBooksGrid();
 }
 
@@ -103,6 +104,7 @@ function removeBook (book) {
         myLibrary.splice(foundIndex, 1);
     }
 
+    updateLocalStorage();
     updateBooksGrid();
 }
 
@@ -111,12 +113,9 @@ function updateBooksGrid() {
     bookGrid.innerHTML = "";
 
     checkLocalStorage();
-
     myLibrary.forEach((book) => {
         createBookCard(book);
     })
-
-    updateLocalStorage();
 }
 
 function updateLocalStorage() {
@@ -134,7 +133,15 @@ submitButton.addEventListener("click", () => {
     modal.style.display = "none";
     addBookToLibrary();
     updateBooksGrid();
+    clearForm();
 })
+
+function clearForm() {
+    document.getElementById("title-input").value = "";
+    document.getElementById("author-input").value = "";
+    document.getElementById("pages-input").value = "";
+    document.getElementById("status-input").value = "";
+}
 
 const modal = document.getElementById("modal");
 
