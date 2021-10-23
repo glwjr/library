@@ -90,7 +90,6 @@ function changeReadStatus(book) {
 
 function removeBook (book) {
     let title = book.title
-
     let foundIndex = myLibrary.findIndex(function (book) {
         return book.title == title
     });
@@ -105,8 +104,8 @@ function removeBook (book) {
 
 function updateBooksGrid() {
     const bookGrid = document.getElementById("book-grid");
+    
     bookGrid.innerHTML = "";
-
     checkLocalStorage();
     myLibrary.forEach((book) => {
         createBookCard(book);
@@ -154,10 +153,10 @@ submitButton.addEventListener("click", () => {
         return
     }
 
+    modal.style.display = "none";
     addBookToLibrary();
     updateBooksGrid();
     clearForm();
-    modal.style.display = "none";
 })
 
 updateBooksGrid();
