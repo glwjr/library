@@ -170,6 +170,17 @@ input, select {
     background-color: #233c70;
 }
 
+#footer {
+    font-size: 16px;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    height: 70px;
+    width: 100%;
+    line-height: 70px;
+    text-align: center;
+}
+
 @media screen and (max-width: 750px) {
     #book-grid {
         grid-template-columns: repeat(2, 1fr);
