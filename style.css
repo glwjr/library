@@ -137,6 +137,7 @@ input, select {
 
 #book-form {
     display: grid;
+    text-align: center;
 }
 
 #title-input,

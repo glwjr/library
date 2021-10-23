@@ -18,15 +18,17 @@
                 <span id="close-modal-button">&times;</span>
                 <div id="modal-title">Add Book</div>
                 <div id="book-form">
-                    <input id="title-input" placeholder="Book Title"></input>
-                    <input id="author-input" placeholder="Book Author"></input>
-                    <input id="pages-input" placeholder="Pages"></input>
-                    <select name="status" id="status-input">
-                        <option selected disabled value="">Read or not read?</option>
-                        <option value="Read">Read</option>
-                        <option value="Not Read">Not Read</option>
-                    </select>
-                    <button id="submit-button">Submit</button>
+                    <form>
+                        <input id="title-input" name="title" placeholder="Book Title" required>
+                        <input required id="author-input" placeholder="Book Author" required>
+                        <input required id="pages-input" placeholder="Pages" required>
+                        <select required name="status" id="status-input" required>
+                            <option selected disabled value="">Read or not read?</option>
+                            <option value="Read">Read</option>
+                            <option value="Not Read">Not Read</option>
+                        </select>
+                        <button id="submit-button" type="submit">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
