@@ -37,6 +37,7 @@ function addBookToLibrary() {
     
     myLibrary.push(newBook);
     createBookCard(newBook);
+    updateLocalStorage();
 }
 
 function createBookCard(book) {
@@ -109,9 +110,23 @@ function updateBooksGrid() {
     const bookGrid = document.getElementById("book-grid");
     bookGrid.innerHTML = "";
 
+    checkLocalStorage();
+
     myLibrary.forEach((book) => {
         createBookCard(book);
     })
+
+    updateLocalStorage();
+}
+
+function updateLocalStorage() {
+    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+}
+
+function checkLocalStorage() {
+    if (localStorage.getItem("myLibrary")) {
+        myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+    }
 }
 
 const submitButton = document.getElementById("submit-button");
