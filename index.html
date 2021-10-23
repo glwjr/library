@@ -7,6 +7,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="content">
+        <div id="header">Library</div>
+        <div id="add-book">
+            <button id="add-book-button">Add Book</button>
+        </div>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span id="close-modal-button">&times;</span>
+                <div id="modal-title">Add Book</div>
+                <div id="book-form">
+                    <input id="title-input" placeholder="Book Title"></input>
+                    <input id="author-input" placeholder="Book Author"></input>
+                    <input id="pages-input" placeholder="Pages"></input>
+                    <select name="status" id="status-input">
+                        <option selected disabled value="">Read or not read?</option>
+                        <option value="Read">Read</option>
+                        <option value="Not Read">Not Read</option>
+                    </select>
+                    <button id="submit-button">Submit</button>
+                </div>
+            </div>
+        </div>
+        <div id="book-grid"></div>
+    </div>
     <script src="app.js"></script>
 </body>
 </html> 

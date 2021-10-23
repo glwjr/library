@@ -1,23 +1,17 @@
 let myLibrary = [
     {
-        title: "In the Wake",
-        author: "Christina Sharpe",
-        pages: 121,
-        readStatus: "Read"
+        title: 'In the Wake',
+        author: 'Christina Sharpe',
+        pages: 118,
+        readStatus: 'Not Read'
     },
     {
-        title: "Testing",
-        author: "Tester",
-        pages: 123,
-        readStatus: "Not Read"
-    },
-    {
-        title: "A really long book title to test out styling",
-        author: "Tester",
-        pages: 123,
-        readStatus: "Read"
+        title: 'A Dance with Dragons',
+        author: 'George R.R. Martin',
+        pages: 1056,
+        readStatus: 'Read'
     }
-];
+]
 
 class Book {
     constructor(title, author, pages, readStatus) {
@@ -28,25 +22,20 @@ class Book {
     }
 }
 
-myLibrary.forEach((book) => {
-    createBookCard(book);
-})
-
-const submitButton = document.getElementById("submit-button");
-submitButton.addEventListener("click", () => {
-    addBookToLibrary();
-})
-
 function addBookToLibrary() {
     const titleInput = document.getElementById("title-input");
     const authorInput = document.getElementById("author-input");
     const pagesInput = document.getElementById("pages-input");
     const statusInput = document.getElementById("status-input");
+    
+    if (titleInput.value == "" || authorInput.value == "" || pagesInput.value == "" || statusInput.value == "") {
+        alert('Please complete the form');
+        return
+    }
 
     const newBook = new Book(titleInput.value,authorInput.value,pagesInput.value,statusInput.value);
     
-    myLibrary.push(newBook)
-
+    myLibrary.push(newBook);
     createBookCard(newBook);
 }
 
@@ -81,4 +70,73 @@ function createBookCard(book) {
     bookCard.appendChild(bookButtonArea);
     bookButtonArea.appendChild(statusButton);
     bookButtonArea.appendChild(deleteButton);
+
+    statusButton.addEventListener("click", () => {
+        changeReadStatus(book);
+    })
+
+    deleteButton.addEventListener("click", () => {
+        removeBook(book);
+    })
 }
+
+function changeReadStatus(book) {
+    if (book.readStatus === "Read") {
+        book.readStatus = "Not Read"
+    }
+    else {
+        book.readStatus = "Read"
+    }
+
+    updateBooksGrid();
+}
+
+function removeBook (book) {
+    let title = book.title
+
+    let foundIndex = myLibrary.findIndex(function (book) {
+        return book.title == title
+    });
+
+    if (foundIndex > -1) {
+        myLibrary.splice(foundIndex, 1);
+    }
+
+    updateBooksGrid();
+}
+
+function updateBooksGrid() {
+    const bookGrid = document.getElementById("book-grid");
+    bookGrid.innerHTML = "";
+
+    myLibrary.forEach((book) => {
+        createBookCard(book);
+    })
+}
+
+const submitButton = document.getElementById("submit-button");
+submitButton.addEventListener("click", () => {
+    modal.style.display = "none";
+    addBookToLibrary();
+    updateBooksGrid();
+})
+
+const modal = document.getElementById("modal");
+
+const addBookButton = document.getElementById("add-book-button");
+addBookButton.addEventListener("click", () => {
+    modal.style.display = "block";
+})
+
+const closeModalButton = document.getElementById("close-modal-button")
+closeModalButton.addEventListener("click", () => {
+    modal.style.display = "none";
+})
+
+window.addEventListener("click", (event) => {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+})
+
+updateBooksGrid();

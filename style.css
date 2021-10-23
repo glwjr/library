@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap');
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    color: #1d3557;
+}
+
+#content {
+    width: 100%;
+}
+
+#header {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 20px 0px;
+    text-align: center;
+    font-size: 60px;
+    font-weight: 900;
+    color: #14213d;
+}
+
+#add-book {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#add-book-button {
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    width: 120px;
+    height: 40px;
+    background-color: #fca311;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #14213d;
+}
+
+#book-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0 50px;
+}
+
+.book-card {
+    border: 3px solid #000000;
+    background-color: #14213d;
+    margin: 10px;
+    border-radius: 20px;
+    min-height: 300px;
+    text-align: center;
+}
+
+.book-title,
+.book-author,
+.book-pages {
+    margin: 30px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.book-buttons {
+    margin: 20px;
+}
+
+.status-button,
+.delete-button {
+    cursor: pointer;
+    background-color: #fca311;
+    color: #14213d;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    width: 85px;
+    height: 45px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+  
+.modal-content {
+    background-color: #ffffff;
+    margin: 5% auto;
+    padding: 20px;
+    border: 2px solid #14213d;
+    border-radius: 10px;
+    width: 50%;
+}
+
+#modal-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    margin: 10px;
+}
+  
+#close-modal-button {
+    color: #14213d;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+#close-modal-button:hover,
+#close-modal-button:focus {
+    color: #233c70;
+    text-decoration: none;
+    cursor: pointer;
+} 
+
+#book-form {
+    display: grid;
+}
+
+#title-input,
+#author-input,
+#pages-input {
+    width: 80%;
+    height: 40px;
+    margin: 10px auto;
+    border: 2px solid #14213d;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 20px;
+}
+
+#status-input {
+    width: 84.3%;
+    height: 54px;
+    margin: 10px auto;
+    border: 2px solid #14213d;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 20px;
+}
+
+#submit-button {
+    cursor: pointer;
+    width: 50%;
+    height: 50px;
+    margin: 10px auto;
+    border: 2px solid #000000;
+    background-color: #14213d;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+#submit-button:hover {
+    background-color: #233c70;
+}
+
+@media screen and (max-width: 750px) {
+    #book-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #book-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .book-card {
+        margin: 20px auto;
+        width: 250px;
+    }
+}
