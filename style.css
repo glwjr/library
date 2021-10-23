@@ -13,6 +13,12 @@ body {
     color: #1d3557;
 }
 
+input, select {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
 #content {
     width: 100%;
 }
@@ -135,19 +141,10 @@ body {
 
 #title-input,
 #author-input,
-#pages-input {
+#pages-input,
+#status-input {
     width: 80%;
     height: 40px;
-    margin: 10px auto;
-    border: 2px solid #14213d;
-    border-radius: 5px;
-    padding: 5px;
-    font-size: 20px;
-}
-
-#status-input {
-    width: 84.3%;
-    height: 54px;
     margin: 10px auto;
     border: 2px solid #14213d;
     border-radius: 5px;
